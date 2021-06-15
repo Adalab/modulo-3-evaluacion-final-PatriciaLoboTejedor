@@ -8,10 +8,7 @@ import ls from "../services/localStorage";
 
 const App = () => {
   const [characters, setCharacters] = useState(ls.get("characters") || []);
-
   const [filterText, setFilterText] = useState(ls.get("filterText") || "");
-  //ls.get('filterText', '') "Maricarmen"
-  /*const [filterGender, setFilterGender] = useState(ls.get("filterGender", ""));*/
 
   useEffect(() => {
     if (characters.length === 0) {
