@@ -3,17 +3,20 @@ const apiFetch = () => {
   return fetch(urlApi)
     .then((response) => response.json())
     .then((data) => {
-      const charactersData = data.results.map((character) => {
-        return {
-          id: character.id,
-          name: character.name,
-          image: character.image,
-          species: character.species,
-          planet: character.location.name,
-          status: character.status,
-          episode: character.episode.length,
-        };
-      });
+      console.log(data.results.name);
+      const charactersData = data.results
+        /*.sort((name) => name - name)*/
+        .map((character) => {
+          return {
+            id: character.id,
+            name: character.name,
+            image: character.image,
+            species: character.species,
+            planet: character.location.name,
+            status: character.status,
+            episode: character.episode.length,
+          };
+        });
       return charactersData;
     });
 };

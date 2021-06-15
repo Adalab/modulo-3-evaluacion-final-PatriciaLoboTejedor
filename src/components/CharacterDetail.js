@@ -1,14 +1,22 @@
-import logo from "../images/Rick_and_Morty_logo.png";
 import { Link } from "react-router-dom";
 
 const CharacterDetail = (props) => {
   const getStatus = () => {
-    if (props.character.status === "Alive") {
-      return "Alive Icon";
-    } else if (props.character.status === "unknown") {
-      return "unknown Icon";
-    } else if (props.character.status === "dead") {
-      return "dead Icon";
+    const statusCharacter = props.character.status;
+    if (statusCharacter === "Alive") {
+      return "fas fa-heartbeat";
+    } else if (statusCharacter === "Dead") {
+      return "fas fa-skull-crossbones";
+    } else {
+      return "fas fa-question";
+    }
+  };
+  const getSpecies = () => {
+    const speciesCharacter = props.character.species;
+    if (speciesCharacter === "Alien") {
+      return "fas fa-hand-spock";
+    } else {
+      return "fas fa-user-alt";
     }
   };
   return (
@@ -24,12 +32,14 @@ const CharacterDetail = (props) => {
           <h4>{props.character.name}</h4>
           <ul>
             <li>
-              Status: {props.character.species}
-              <i className={getStatus()}></i>
+              Status: <i className={getStatus()}></i>
             </li>
-            <li>Species: {props.character.species}</li>
+            <li>
+              Species:
+              <i className={getSpecies()}> {props.character.species}</i>
+            </li>
             <li>Origin: {props.character.planet}</li>
-            <li>Episodes: {props.character.episodes}</li>
+            <li>Episodes: {props.character.episode}</li>
           </ul>
         </section>
       </main>

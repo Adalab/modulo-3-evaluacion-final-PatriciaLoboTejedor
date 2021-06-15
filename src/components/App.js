@@ -12,9 +12,12 @@ import apiFetch from "../services/apiFetch";
 import ls from "../services/localStorage";
 
 const App = () => {
+  // Estado inicial del array principal, o se llena con el local o nos devuelve un array vacío
   const [characters, setCharacters] = useState(ls.get("characters") || []);
+  // Estado inicial del input text, o se llena con el local o nos devuelve un string vacío
   const [filterName, setFilterName] = useState(ls.get("filterName") || "");
 
+  // Si el array characters esta vacío entonces llamo a la función del fetch
   useEffect(() => {
     if (characters.length === 0) {
       apiFetch().then((charactersData) => {
@@ -23,12 +26,13 @@ const App = () => {
     }
   }, []);
 
+  // Guarda los cambios de estado en localStorage
   useEffect(() => {
     ls.set("characters", characters);
     ls.set("filterName", filterName);
   }, [characters, filterName]);
 
-  // event handlers
+  // Evento manejador del value del input para filtrar por nombre
   const handleFilter = (data) => {
     if (data.key === "name") {
       setFilterName(data.value);
@@ -39,9 +43,8 @@ const App = () => {
   const filteredCharacters = characters.filter((user) => {
     return user.name.toLowerCase().includes(filterName.toLowerCase());
   });
-
+  // Asigna una ruta única según el id del personaje para que se habra el componente detalle de él
   const renderCharacterDetail = (props) => {
-    console.log("router props", props);
     const routeCharacterId = parseInt(props.match.params.characterId);
     const foundCharacter = characters.find((character) => {
       return character.id === routeCharacterId;
@@ -61,7 +64,7 @@ const App = () => {
       <main>
         <Switch>
           <Route exact path="/">
-            <FilterByName handleFilter={handleFilter} />
+            <FilterByName filterName={filterName} handleFilter={handleFilter} />
             <CharacterList characters={filteredCharacters} />
           </Route>
           <Route
