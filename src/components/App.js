@@ -61,9 +61,9 @@ const App = () => {
 
   // Asigna una ruta única según el id del personaje para que se abra el componente detalle del personaje
   const renderCharacterDetail = (propsId) => {
-    const routeCharacterId = propsId.match.params.characterId;
+    const routeCharacterId = parseInt(propsId.match.params.characterId);
     const foundCharacter = characters.find(
-      (character) => character.id === parseInt(routeCharacterId)
+      (character) => character.id === routeCharacterId
     );
     if (foundCharacter) {
       return <CharacterDetail character={foundCharacter} />;
@@ -103,9 +103,6 @@ const App = () => {
           />
         </Switch>
       </main>
-      <footer className="footer">
-        <small>Patricia Lobo &copy; 2021</small>
-      </footer>
     </div>
   );
 };

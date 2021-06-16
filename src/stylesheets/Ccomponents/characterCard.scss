@@ -1,0 +1,88 @@
+.characterCard {
+  background-color: rgb(0, 176, 199);
+  height: 200px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  @include tablet {
+    height: 250px;
+    width: 200px;
+  }
+  &:hover {
+    border: 5px white solid;
+  }
+  &__img {
+    max-width: 150px;
+    @include tablet {
+      max-width: 200px;
+    }
+  }
+  &__text {
+    font-size: 10px;
+    padding: 5px;
+    @include tablet {
+      font-size: 12px;
+      padding: 10px;
+    }
+    &-name {
+      font-size: 10px;
+      padding-bottom: 5px;
+      @include tablet {
+        font-size: 12px;
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+.wrap-cardDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .link_return {
+    color: white;
+    align-self: flex-end;
+    margin-right: 100px;
+  }
+  .characterCardDetail {
+    background-color: rgb(0, 176, 199);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    margin-top: 15px;
+    width: 300px;
+    @include tablet {
+      width: 500px;
+    }
+
+    &__img {
+      width: 150px;
+      padding: 10px;
+      @include tablet {
+        width: 190px;
+        padding: 20px;
+      }
+    }
+    &__detail {
+      font-size: 10px;
+      margin: 0px 10px;
+      @include tablet {
+        margin: 0px 30px;
+        font-size: 12px;
+      }
+      &-name {
+        padding-bottom: 5px;
+        font-size: 12px;
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+      span {
+        font-weight: bolder;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 .body {
-  background-color: black;
   color: white;
   font-family: $fontMontserrat;
-
+  padding: 20px;
   .header {
     display: flex;
     align-items: center;
@@ -10,10 +9,12 @@
     &__logo {
       width: 300px;
       padding: 10px;
+      margin-bottom: 10px;
     }
   }
   .main {
     &__sectionForm {
+      margin-bottom: 20px;
       &-form {
         display: flex;
         flex-wrap: wrap;
@@ -24,7 +25,7 @@
           border: 2px $bluePrincipal solid;
           background-color: black;
           color: white;
-          min-width: 300px;
+          min-width: 270px;
           padding: 5px 10px;
           height: 30px;
           &::placeholder {
@@ -53,9 +54,39 @@
       }
     }
     &__list {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      @include tablet {
+        gap: 15px;
+        justify-items: center;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      }
+    }
+    .error200 {
+      margin-top: 60px;
+      text-align: center;
+      span {
+        font-weight: bolder;
+      }
+    }
+    .error400 {
+      margin-top: 40px;
+      text-align: center;
+      &_button {
+        cursor: pointer;
+        background-color: $bluePrincipal;
+        color: white;
+        border-radius: 5px;
+        height: 30px;
+        width: 150px;
+        margin-top: 20px;
+      }
     }
   }
   .footer {
     padding: 20px;
+    bottom: 0px;
   }
 }

@@ -4,26 +4,26 @@ const Error = (props) => {
   const renderError = () => {
     if (props.errorCode === 200) {
       return (
-        <article className="">
-          No hay ningún personaje que coincida con la palabra:
-          <span className=""> {props.filterName}</span>
+        <article className="error200">
+          There is no character that matches the search for the word:
+          <span> {props.filterName}</span>
         </article>
       );
     } else if (props.errorCode === 400) {
       return (
-        <article className="">
-          <h2 className="">This character doesn't exist.</h2>
+        <article className="error400">
+          <h2>This character doesn't exist.</h2>
           <Link to="/">
-            <button className="">Back to character list</button>
+            <button className="error400_button">Back to character list</button>
           </Link>
         </article>
       );
     } else {
-      return <p className="">Page not found</p>;
+      return <h2>Page not found</h2>;
     }
   };
 
-  return <div className="">{renderError()}</div>;
+  return <section>{renderError()}</section>;
 };
 
 export default Error;

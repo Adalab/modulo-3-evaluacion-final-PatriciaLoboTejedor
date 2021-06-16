@@ -15,25 +15,38 @@ const CharacterDetail = (props) => {
 
   return (
     <>
-      <main>
-        <Link to="/">Volver</Link>
-        <section>
+      <div className="wrap-cardDetail">
+        <Link to="/" className="link_return">
+          <i className="fas fa-arrow-left"></i> Return
+        </Link>
+        <article className="characterCardDetail">
           <img
-            className=""
+            className="characterCardDetail__img"
             src={props.character.image}
             alt={props.character.name}
           />
-          <h4>{props.character.name}</h4>
-          <ul>
-            <li>
-              Status: <i className={getStatus()}></i>
-            </li>
-            <li>Species: {props.character.species}</li>
-            <li>Origin: {props.character.origin}</li>
-            <li>Episodes: {props.character.episode}</li>
-          </ul>
-        </section>
-      </main>
+          <div className="characterCardDetail__detail">
+            <h4 className="characterCardDetail__detail-name">
+              {props.character.name}
+            </h4>
+            <ul>
+              <li>
+                <span>Status: </span>
+                <i className={getStatus()}></i>
+              </li>
+              <li>
+                <span>Species: </span> {props.character.species}
+              </li>
+              <li>
+                <span>Origin: </span> {props.character.origin}
+              </li>
+              <li>
+                <span>Episodes: </span> {props.character.episode}
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
     </>
   );
 };

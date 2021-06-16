@@ -18,11 +18,14 @@ const CharacterCard = (props) => {
           alt={props.character.name}
           className="characterCard__img"
         />
-        <h2 className="characterCard__name">{props.character.name}</h2>
-        <p className="characterCard__species">
-          <i className={`${getSpecies()} characterCard__species`}></i>
-          {props.character.species}
-        </p>
+        <div className="characterCard__text">
+          <h2 className="characterCard__text-name">{props.character.name}</h2>
+          <p className="characterCard__text-species">
+            <i
+              className={`${getSpecies()} characterCard__text-species-icon`}></i>
+            {props.character.species}
+          </p>
+        </div>
       </article>
     </Link>
   );
