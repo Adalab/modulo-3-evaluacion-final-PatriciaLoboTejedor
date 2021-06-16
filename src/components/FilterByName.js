@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const FilterByName = (props) => {
   // Evento que maneja el value del input en referencia a su key
   const handleChange = (ev) => {
@@ -25,3 +27,8 @@ const FilterByName = (props) => {
 };
 
 export default FilterByName;
+
+FilterByName.propTypes = {
+  handleChange: PropTypes.func,
+  filterName: PropTypes.string,
+};

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const CharacterDetail = (props) => {
   const getStatus = () => {
@@ -38,3 +39,15 @@ const CharacterDetail = (props) => {
 };
 
 export default CharacterDetail;
+
+CharacterDetail.propTypes = {
+  character: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    status: PropTypes.string,
+    origin: PropTypes.string,
+    episode: PropTypes.number,
+    species: PropTypes.string,
+    image: PropTypes.string,
+  }),
+};

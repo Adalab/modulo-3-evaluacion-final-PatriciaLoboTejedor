@@ -7,6 +7,7 @@ import logo from "../images/Rick_and_Morty_logo.png";
 import CharacterList from "./CharacterList";
 import Filters from "./Filters";
 import CharacterDetail from "./CharacterDetail";
+import Error from "./Error";
 // Servicios importados
 import apiFetch from "../services/apiFetch";
 import ls from "../services/localStorage";
@@ -59,16 +60,22 @@ const App = () => {
     });
 
   // Asigna una ruta única según el id del personaje para que se habra el componente detalle de él
-  const renderCharacterDetail = (props) => {
-    const routeCharacterId = parseInt(props.match.params.characterId);
-    const foundCharacter = characters.find((character) => {
-      return character.id === routeCharacterId;
-    });
-    if (foundCharacter !== undefined) {
+  const renderCharacterDetail = (propsId) => {
+    const routeCharacterId = propsId.match.params.characterId;
+    const foundCharacter = characters.find(
+      (character) => character.id === parseInt(routeCharacterId)
+    );
+    if (foundCharacter) {
       return <CharacterDetail character={foundCharacter} />;
     } else {
-      return <p>Personaje no encontrado</p>;
+      return <Error errorCode={400} />;
     }
+  };
+
+  // Reset
+  const handleReset = () => {
+    setFilterName("");
+    setFilterSpecies("");
   };
 
   return (
@@ -80,11 +87,15 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Filters
+              reset={handleReset}
               filterName={filterName}
               filterSpecies={filterSpecies}
               handleFilter={handleFilter}
             />
-            <CharacterList characters={filteredCharacters} />
+            <CharacterList
+              filterName={filterName}
+              characters={filteredCharacters}
+            />
           </Route>
           <Route
             path="/character/:characterId"
@@ -92,6 +103,9 @@ const App = () => {
           />
         </Switch>
       </main>
+      <footer>
+        <small>Patricia Lobo &copy; 2021</small>
+      </footer>
     </div>
   );
 };
