@@ -54,13 +54,16 @@
       }
     }
     &__list {
+      padding: 0px 30px;
+      @include tablet {
+        padding: 0px 150px;
+      }
       display: grid;
-      gap: 10px;
+      gap: 20px;
       justify-items: center;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       @include tablet {
         gap: 15px;
-        justify-items: center;
         grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
       }
     }

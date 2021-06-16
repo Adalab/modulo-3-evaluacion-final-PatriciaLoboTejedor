@@ -16,10 +16,10 @@ const CharacterDetail = (props) => {
   return (
     <>
       <div className="wrap-cardDetail">
-        <Link to="/" className="link_return">
-          <i className="fas fa-arrow-left"></i> Return
-        </Link>
         <article className="characterCardDetail">
+          <Link to="/" className="link_return">
+            <i className="fas fa-arrow-left"></i> Return
+          </Link>
           <img
             className="characterCardDetail__img"
             src={props.character.image}
