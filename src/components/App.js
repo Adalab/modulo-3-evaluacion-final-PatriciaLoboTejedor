@@ -101,6 +101,9 @@ const App = () => {
             path="/character/:characterId"
             render={renderCharacterDetail}
           />
+          <Route>
+            <Error errorCode={404} />
+          </Route>
         </Switch>
       </main>
     </div>

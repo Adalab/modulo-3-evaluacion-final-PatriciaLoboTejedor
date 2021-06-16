@@ -18,8 +18,15 @@ const Error = (props) => {
           </Link>
         </article>
       );
-    } else {
-      return <h2>Page not found</h2>;
+    } else if (props.errorCode === 404) {
+      return (
+        <article className="error400">
+          <h2>Page not found</h2>
+          <Link to="/">
+            <button className="error400_button">Back to character list</button>
+          </Link>
+        </article>
+      );
     }
   };
 
