@@ -8,7 +8,7 @@ En este repositorio de GitHub puedes encontrar los archivos generados fruto de l
 
 Sigue el [siguente enlace](http://beta.adalab.es/modulo-3-evaluacion-final-PatriciaLoboTejedor/#/) con el cual, a través de GitHub Pages podrás visualizar el proyecto directamente a través de un servidor online.
 
-![image]()
+(![image](https://user-images.githubusercontent.com/81681513/122241776-1a4b0200-cec3-11eb-97e2-9120b0d49565.png)
 
 ### **_Visualización en local_**
 
