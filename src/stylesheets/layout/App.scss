@@ -1,0 +1,61 @@
+.body {
+  background-color: black;
+  color: white;
+  font-family: $fontMontserrat;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__logo {
+      width: 300px;
+      padding: 10px;
+    }
+  }
+  .main {
+    &__sectionForm {
+      &-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        &_input {
+          margin: 5px;
+          border: 2px $bluePrincipal solid;
+          background-color: black;
+          color: white;
+          min-width: 300px;
+          padding: 5px 10px;
+          height: 30px;
+          &::placeholder {
+            color: white;
+          }
+        }
+        &_select {
+          cursor: pointer;
+          border: 2px $bluePrincipal solid;
+          background-color: black;
+          color: white;
+          min-width: 150px;
+          height: 30px;
+          padding: 5px;
+          margin: 5px;
+        }
+        &_reset {
+          cursor: pointer;
+          background-color: $bluePrincipal;
+          color: black;
+          border-radius: 5px;
+          height: 30px;
+          width: 70px;
+          margin: 5px;
+        }
+      }
+    }
+    &__list {
+    }
+  }
+  .footer {
+    padding: 20px;
+  }
+}

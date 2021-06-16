@@ -8,8 +8,8 @@ const Filters = (props) => {
     ev.preventDefault();
   };
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
+    <section className="main__sectionForm">
+      <form onSubmit={handleSubmit} className="main__sectionForm-form">
         <FilterByName
           filterName={props.filterName}
           handleFilter={props.handleFilter}
@@ -18,7 +18,7 @@ const Filters = (props) => {
           filterSpecies={props.filterSpecies}
           handleFilter={props.handleFilter}
         />
-        <button className="" onClick={props.reset}>
+        <button className="main__sectionForm-form_reset" onClick={props.reset}>
           <i className="far fa-trash-alt"></i> Reset
         </button>
       </form>

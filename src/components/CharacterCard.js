@@ -12,11 +12,16 @@ const CharacterCard = (props) => {
   };
   return (
     <Link to={`/character/${props.character.id}`}>
-      <article>
-        <img src={props.character.image} alt={props.character.name} />
-        <h2>{props.character.name}</h2>
-        <p>
-          <i className={getSpecies()}>{props.character.species}</i>
+      <article className="characterCard">
+        <img
+          src={props.character.image}
+          alt={props.character.name}
+          className="characterCard__img"
+        />
+        <h2 className="characterCard__name">{props.character.name}</h2>
+        <p className="characterCard__species">
+          <i className={`${getSpecies()} characterCard__species`}></i>
+          {props.character.species}
         </p>
       </article>
     </Link>

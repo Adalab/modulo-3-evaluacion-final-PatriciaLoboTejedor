@@ -10,15 +10,13 @@ const FilterBySpecies = (props) => {
   };
   return (
     <>
-      <label className="" htmlFor="species">
-        Filter by species:
-      </label>
-
+      <label htmlFor="species"></label>
       <select
-        className=""
+        className="main__sectionForm-form_select"
         name="species"
         id="species"
         value={props.filterSpecies}
+        placeholder="Filter by species"
         onChange={handleChange}>
         <option value="">All</option>
         <option value="Human">Human</option>

@@ -11,14 +11,13 @@ const FilterByName = (props) => {
 
   return (
     <>
-      <label className="" htmlFor="name">
-        Filter by name:
-      </label>
+      <label htmlFor="name"></label>
       <input
-        className=""
+        className="main__sectionForm-form_input"
         type="text"
         name="name"
         id="name"
+        placeholder="Filter by name"
         value={props.filterName}
         onChange={handleChange}
       />

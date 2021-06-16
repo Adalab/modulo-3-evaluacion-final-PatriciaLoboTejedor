@@ -1,6 +1,7 @@
 import CharacterCard from "./CharacterCard";
 import PropTypes from "prop-types";
 import Error from "./Error";
+import "../stylesheets/components/characterCard.scss";
 
 const CharacterList = (props) => {
   // Pinta el componente error en su estado 200 si la búsqueda no tiene resultados
@@ -16,7 +17,7 @@ const CharacterList = (props) => {
   });
 
   return (
-    <section>
+    <section className="main__list">
       <ul>{characterElements}</ul>
     </section>
   );

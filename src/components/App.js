@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-// Estilos importados
-import "../stylesheets/App.scss";
+
+// Imagen importada
 import logo from "../images/Rick_and_Morty_logo.png";
 // Componentes importados
 import CharacterList from "./CharacterList";
@@ -28,7 +28,7 @@ const App = () => {
         setCharacters(charactersData);
       });
     }
-  }, []);
+  }, [characters]);
 
   // Guarda los cambios de estado en localStorage
   useEffect(() => {
@@ -37,7 +37,7 @@ const App = () => {
     ls.set("filterSpecies", filterSpecies);
   }, [characters, filterName, filterSpecies]);
 
-  // Evento manejador del value del input para filtrar por nombre
+  // Evento manejador del value de los inputs para filtrar
   const handleFilter = (data) => {
     if (data.key === "name") {
       setFilterName(data.value);
@@ -46,7 +46,7 @@ const App = () => {
     }
   };
 
-  // Guarda los personajes filtrados para pasarlos por props a re-pintar
+  // Guarda los personajes filtrados para pasarlos por props al listado y asi repintar
   const filteredCharacters = characters
     .filter((character) => {
       return character.name.toLowerCase().includes(filterName.toLowerCase());
@@ -59,7 +59,7 @@ const App = () => {
       }
     });
 
-  // Asigna una ruta única según el id del personaje para que se habra el componente detalle de él
+  // Asigna una ruta única según el id del personaje para que se abra el componente detalle del personaje
   const renderCharacterDetail = (propsId) => {
     const routeCharacterId = propsId.match.params.characterId;
     const foundCharacter = characters.find(
@@ -79,11 +79,11 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <header>
-        <img src={logo} alt="Ricky and Morty" />
+    <div className="body">
+      <header className="header">
+        <img src={logo} alt="Ricky and Morty" className="header__logo" />
       </header>
-      <main>
+      <main className="main">
         <Switch>
           <Route exact path="/">
             <Filters
@@ -103,7 +103,7 @@ const App = () => {
           />
         </Switch>
       </main>
-      <footer>
+      <footer className="footer">
         <small>Patricia Lobo &copy; 2021</small>
       </footer>
     </div>
