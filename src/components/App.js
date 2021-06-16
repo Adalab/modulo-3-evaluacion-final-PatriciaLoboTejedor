@@ -5,7 +5,7 @@ import "../stylesheets/App.scss";
 import logo from "../images/Rick_and_Morty_logo.png";
 // Componentes importados
 import CharacterList from "./CharacterList";
-import FilterByName from "./FilterByName";
+import Filters from "./Filters";
 import CharacterDetail from "./CharacterDetail";
 // Servicios importados
 import apiFetch from "../services/apiFetch";
@@ -16,6 +16,9 @@ const App = () => {
   const [characters, setCharacters] = useState(ls.get("characters") || []);
   // Estado inicial del input text, o se llena con el local o nos devuelve un string vacío
   const [filterName, setFilterName] = useState(ls.get("filterName") || "");
+  const [filterSpecies, setFilterSpecies] = useState(
+    ls.get("filterSpecies") || ""
+  );
 
   // Si el array characters esta vacío entonces llamo a la función del fetch
   useEffect(() => {
@@ -30,19 +33,31 @@ const App = () => {
   useEffect(() => {
     ls.set("characters", characters);
     ls.set("filterName", filterName);
-  }, [characters, filterName]);
+    ls.set("filterSpecies", filterSpecies);
+  }, [characters, filterName, filterSpecies]);
 
   // Evento manejador del value del input para filtrar por nombre
   const handleFilter = (data) => {
     if (data.key === "name") {
       setFilterName(data.value);
+    } else if (data.key === "species") {
+      setFilterSpecies(data.value);
     }
   };
 
   // Guarda los personajes filtrados para pasarlos por props a re-pintar
-  const filteredCharacters = characters.filter((user) => {
-    return user.name.toLowerCase().includes(filterName.toLowerCase());
-  });
+  const filteredCharacters = characters
+    .filter((character) => {
+      return character.name.toLowerCase().includes(filterName.toLowerCase());
+    })
+    .filter((character) => {
+      if (filterSpecies === "") {
+        return true;
+      } else {
+        return character.species === filterSpecies;
+      }
+    });
+
   // Asigna una ruta única según el id del personaje para que se habra el componente detalle de él
   const renderCharacterDetail = (props) => {
     const routeCharacterId = parseInt(props.match.params.characterId);
@@ -64,7 +79,11 @@ const App = () => {
       <main>
         <Switch>
           <Route exact path="/">
-            <FilterByName filterName={filterName} handleFilter={handleFilter} />
+            <Filters
+              filterName={filterName}
+              filterSpecies={filterSpecies}
+              handleFilter={handleFilter}
+            />
             <CharacterList characters={filteredCharacters} />
           </Route>
           <Route

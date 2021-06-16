@@ -11,14 +11,7 @@ const CharacterDetail = (props) => {
       return "fas fa-question";
     }
   };
-  const getSpecies = () => {
-    const speciesCharacter = props.character.species;
-    if (speciesCharacter === "Alien") {
-      return "fas fa-hand-spock";
-    } else {
-      return "fas fa-user-alt";
-    }
-  };
+
   return (
     <>
       <main>
@@ -34,11 +27,8 @@ const CharacterDetail = (props) => {
             <li>
               Status: <i className={getStatus()}></i>
             </li>
-            <li>
-              Species:
-              <i className={getSpecies()}> {props.character.species}</i>
-            </li>
-            <li>Origin: {props.character.planet}</li>
+            <li>Species: {props.character.species}</li>
+            <li>Origin: {props.character.origin}</li>
             <li>Episodes: {props.character.episode}</li>
           </ul>
         </section>

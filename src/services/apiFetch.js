@@ -3,7 +3,7 @@ const apiFetch = () => {
   return fetch(urlApi)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.results.name);
+      console.log(data);
       const charactersData = data.results
         /*.sort((name) => name - name)*/
         .map((character) => {
@@ -11,9 +11,9 @@ const apiFetch = () => {
             id: character.id,
             name: character.name,
             image: character.image,
-            species: character.species,
-            planet: character.location.name,
             status: character.status,
+            species: character.species,
+            origin: character.origin.name,
             episode: character.episode.length,
           };
         });
