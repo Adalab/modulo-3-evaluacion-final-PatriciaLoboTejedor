@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 
 const CharacterCard = (props) => {
   const getSpecies = () => {
-    const speciesCharacter = props.character.species;
-    if (speciesCharacter === "Alien") {
+    const raceCharacter = props.character.race;
+    if (raceCharacter === "Alien") {
       return "fas fa-hand-spock";
-    } else {
+    } else if (raceCharacter === "Human") {
       return "fas fa-user-alt";
+    } else {
+      return "fas fa-times";
     }
   };
   return (
@@ -23,7 +25,9 @@ const CharacterCard = (props) => {
           <p className="characterCard__text-species">
             <i
               className={`${getSpecies()} characterCard__text-species-icon`}></i>
-            {props.character.species}
+            <span className="characterCard__text-species-text">
+              {props.character.race}
+            </span>
           </p>
         </div>
       </article>

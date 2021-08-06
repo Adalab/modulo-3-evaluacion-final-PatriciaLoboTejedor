@@ -1,5 +1,5 @@
 import FilterByName from "./FilterByName";
-import FilterBySpecies from "./FilterBySpecies";
+import FilterByRace from "./FilterByRace";
 import PropTypes from "prop-types";
 
 const Filters = (props) => {
@@ -14,8 +14,8 @@ const Filters = (props) => {
           filterName={props.filterName}
           handleFilter={props.handleFilter}
         />
-        <FilterBySpecies
-          filterSpecies={props.filterSpecies}
+        <FilterByRace
+          filterRace={props.filterRace}
           handleFilter={props.handleFilter}
         />
         <button className="main__sectionForm-form_reset" onClick={props.reset}>

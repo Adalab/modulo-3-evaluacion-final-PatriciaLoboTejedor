@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Imagen importada
-import logo from "../images/Rick_and_Morty_logo.png";
+import logo from "../images/super-heroes.png";
 // Componentes importados
 import CharacterList from "./CharacterList";
 import Filters from "./Filters";
@@ -17,9 +17,7 @@ const App = () => {
   const [characters, setCharacters] = useState(ls.get("characters") || []);
   // Estado inicial del input text, o se llena con el local o nos devuelve un string vacío
   const [filterName, setFilterName] = useState(ls.get("filterName") || "");
-  const [filterSpecies, setFilterSpecies] = useState(
-    ls.get("filterSpecies") || ""
-  );
+  const [filterRace, setFilterRace] = useState(ls.get("filterRace") || "");
 
   // Si el array characters esta vacío entonces llamo a la función del fetch
   useEffect(() => {
@@ -34,15 +32,15 @@ const App = () => {
   useEffect(() => {
     ls.set("characters", characters);
     ls.set("filterName", filterName);
-    ls.set("filterSpecies", filterSpecies);
-  }, [characters, filterName, filterSpecies]);
+    ls.set("filterRace", filterRace);
+  }, [characters, filterName, filterRace]);
 
   // Evento manejador del value de los inputs para filtrar
   const handleFilter = (data) => {
     if (data.key === "name") {
       setFilterName(data.value);
-    } else if (data.key === "species") {
-      setFilterSpecies(data.value);
+    } else if (data.key === "race") {
+      setFilterRace(data.value);
     }
   };
 
@@ -52,10 +50,10 @@ const App = () => {
       return character.name.toLowerCase().includes(filterName.toLowerCase());
     })
     .filter((character) => {
-      if (filterSpecies === "") {
+      if (filterRace === "") {
         return true;
       } else {
-        return character.species === filterSpecies;
+        return character.race === filterRace;
       }
     });
 
@@ -75,7 +73,7 @@ const App = () => {
   // Reset
   const handleReset = () => {
     setFilterName("");
-    setFilterSpecies("");
+    setFilterRace("");
   };
 
   return (
@@ -89,7 +87,7 @@ const App = () => {
             <Filters
               reset={handleReset}
               filterName={filterName}
-              filterSpecies={filterSpecies}
+              filterRace={filterRace}
               handleFilter={handleFilter}
             />
             <CharacterList

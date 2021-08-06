@@ -5,7 +5,7 @@ const FilterBySpecies = (props) => {
   const handleChange = (ev) => {
     props.handleFilter({
       value: ev.target.value,
-      key: "species",
+      key: "race",
     });
   };
   return (
@@ -16,7 +16,7 @@ const FilterBySpecies = (props) => {
         name="species"
         id="species"
         value={props.filterSpecies}
-        placeholder="Filter by species"
+        placeholder="Filter by races"
         onChange={handleChange}>
         <option value="">All</option>
         <option value="Human">Human</option>
@@ -30,5 +30,5 @@ export default FilterBySpecies;
 
 FilterBySpecies.propTypes = {
   handleChange: PropTypes.func,
-  filterSpecies: PropTypes.string,
+  filterRace: PropTypes.string,
 };
