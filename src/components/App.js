@@ -79,7 +79,7 @@ const App = () => {
   return (
     <div className="body">
       <header className="header">
-        <img src={logo} alt="Ricky and Morty" className="header__logo" />
+        <img src={logo} alt="SuperHero" className="header__logo" />
       </header>
       <main className="main">
         <Switch>

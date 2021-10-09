@@ -1,25 +1,26 @@
 const apiFetch = () => {
-  const urlApi = "https://akabab.github.io/superhero-api/api/all.json";
+  const urlApi = "https://superheroapi.com/api/3076628172556063/";
   return fetch(urlApi)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const orderAllCharactersByName = data.sort((a, b) =>
         a.name.localeCompare(b.name)
       );
-      console.log(data);
-      const charactersData = orderAllCharactersByName.map((character) => {
+      const charactersData = orderAllCharactersByName.map((results) => {
         return {
-          id: character.id,
-          name: character.name,
-          image: character.images.sm,
-          intelligence: character.powerstats.intelligence,
-          strength: character.powerstats.strength,
-          speed: character.powerstats.speed,
-          durability: character.powerstats.durability,
-          power: character.powerstats.intelligence,
-          combat: character.powerstats.intelligence,
-          gender: character.appearance.gender,
-          race: character.appearance.race,
+          id: results.id,
+          name: results.name,
+          image: results.image.url,
+          intelligence: results.powerstats.intelligence,
+          strength: results.powerstats.strength,
+          speed: results.powerstats.speed,
+          durability: results.powerstats.durability,
+          power: results.powerstats.power,
+          combat: results.powerstats.combat,
+          gender: results.appearance.gender,
+          race: results.appearance.race,
+          alignment: results.alignment,
         };
       });
       return charactersData;
